@@ -1,10 +1,13 @@
-// create web server 
-const express = require('express');
-const app = express();
+// create web server
+const http = require('http');
 const port = 3000;
 
-// create a route for the app
-app.get('/', (req, res) => res.send('Hello World!'));
+// create a server
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-type', 'text/plain');
+    res.end('Hello World!\n');
+});
 
 // start the server
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+server.listen(port, () => console.log(`Server running on port ${port}`));
